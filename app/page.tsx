@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import { ModalLink, ModalsProvider } from "@/features/modal";
+import { Modal, ModalLink, ModalsProvider } from "@/features/modal";
 import { DemoContent } from "@/components/DemoContent";
 
 export default function Home({
@@ -31,18 +31,18 @@ export default function Home({
       <ModalLink
         searchParams={searchParams}
         modalId="02"
-        title="Modal bez čočky"
+        //title="Přepsaný titulek"
       >
         <button>Open modal 2</button>
       </ModalLink>
 
       <ModalsProvider searchParams={searchParams}>
-        <div id="01">
+        <Modal modalId="01">
           <DemoContent label="Ten navždy první" />
-        </div>
-        <div id="02">
+        </Modal>
+        <Modal modalId="02" title="Původní titulek">
           <DemoContent label="Enim laborum sint" />
-        </div>
+        </Modal>
       </ModalsProvider>
     </main>
   );

@@ -12,10 +12,15 @@ export const ModalsProvider = ({
   children,
 }: ModalsProviderProps) => {
   const params = new URLSearchParams(searchParams as any);
-  const title = getString(params, KEYS.TITLE);
   const modalId = getString(params, KEYS.MODAL_ID);
 
   if (modalId == null) return null;
+
+  const active = Children.toArray(children).find(
+    (x) => (x as any).props?.modalId == modalId
+  );
+
+  const title = getString(params, KEYS.TITLE) ?? (active as any).props.title;
 
   return (
     <div
@@ -35,11 +40,7 @@ export const ModalsProvider = ({
         </ModalLink>
       </div>
 
-      <div>
-        {Children.toArray(children).find(
-          (x) => (x as any).props?.id == modalId
-        )}
-      </div>
+      <div>{active}</div>
     </div>
   );
 };
