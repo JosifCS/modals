@@ -1,25 +1,25 @@
 export const KEYS = {
   TITLE: "modalTitle",
   MODAL_ID: "modalId",
-  DATA: "modalData",
+  VARIABLES: "modalVar",
 } as const;
 
 export type SetModalHrefOpts = {
-  data?: { [key: string]: string };
+  variables?: { [key: string]: string };
   modalId?: string;
   title?: string;
 };
 
 export const setModalHref = (
   searchParams: unknown,
-  { title, modalId, data }: SetModalHrefOpts
+  { title, modalId, variables }: SetModalHrefOpts
 ) => {
-  const params = new URLSearchParams(searchParams as any);
-  setString(params, KEYS.TITLE, title);
-  setString(params, KEYS.MODAL_ID, modalId);
-  setData(params, data);
+  const urlParams = new URLSearchParams(searchParams as any);
+  setString(urlParams, KEYS.TITLE, title);
+  setString(urlParams, KEYS.MODAL_ID, modalId);
+  setVariables(urlParams, variables);
 
-  return `?${params.toString()}`;
+  return `?${urlParams.toString()}`;
 };
 
 const setString = (params: URLSearchParams, key: string, value?: string) => {
@@ -27,10 +27,10 @@ const setString = (params: URLSearchParams, key: string, value?: string) => {
   else params.set(key, encodeURIComponent(value));
 };
 
-const setData = (
+const setVariables = (
   params: URLSearchParams,
   value?: { [key: string]: string }
 ) => {
-  if (value == undefined) params.delete(KEYS.DATA);
-  else params.set(KEYS.DATA, encodeURIComponent(JSON.stringify(value)));
+  if (value == undefined) params.delete(KEYS.VARIABLES);
+  else params.set(KEYS.VARIABLES, encodeURIComponent(JSON.stringify(value)));
 };

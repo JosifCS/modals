@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { FC, ReactNode } from "react";
 
 export type ModalProps = {
   children: ReactNode;
@@ -6,6 +6,14 @@ export type ModalProps = {
   title?: string;
 };
 
-export const Modal = ({ children, modalId, title }: ModalProps) => {
+export const Modal = ({ children }: ModalProps) => {
   return children;
 };
+
+export type ModalFC<OtherParams extends object = {}> = FC<
+  {
+    searchParams: unknown;
+    modalId: string;
+    title?: string;
+  } & OtherParams
+>;

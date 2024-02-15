@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { KEYS, ModalLink, setModalHref } from "..";
+import { KEYS, ModalLink } from "..";
 import { Children, ReactNode } from "react";
 
 export type ModalsProviderProps = {
