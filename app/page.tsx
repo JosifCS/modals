@@ -22,7 +22,11 @@ export default function Home({
         minim. In incididunt commodo ex nisi qui esse reprehenderit elit sint
         officia excepteur. Consequat est non reprehenderit sint et ea veniam.
       </p>
-      <Link href={setModalHref(searchParams, { title: "Super2" })}>
+      <Link
+        href={setModalHref(searchParams, {
+          title: "Modal s nadpisem a čočkou",
+        })}
+      >
         <button>Open modal2</button>
       </Link>
 
