@@ -11,15 +11,18 @@ export const ModalsProvider = ({
   searchParams,
   children,
 }: ModalsProviderProps) => {
+  const array = Children.toArray(children);
+  if (array.some((x) => (x as any).props?.modalId == undefined))
+    throw Error(
+      "ModalsProvider contains invalid child (missing modalId parameter). The ModalsProvider should only contain children of type Modal."
+    );
+
   const params = new URLSearchParams(searchParams as any);
   const modalId = getString(params, KEYS.MODAL_ID);
 
   if (modalId == null) return null;
 
-  const active = Children.toArray(children).find(
-    (x) => (x as any).props?.modalId == modalId
-  );
-
+  const active = array.find((x) => (x as any).props?.modalId == modalId);
   const title = getString(params, KEYS.TITLE) ?? (active as any).props.title;
 
   return (
