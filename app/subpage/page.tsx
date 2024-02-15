@@ -1,4 +1,4 @@
-import { ModalProvider } from "@/features/modal";
+import { ModalsProvider } from "@/features/modal";
 
 export default function Subpage() {
   return (

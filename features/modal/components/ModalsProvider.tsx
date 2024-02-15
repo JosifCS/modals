@@ -2,15 +2,15 @@ import Link from "next/link";
 import { KEYS, ModalLink, setModalHref } from "..";
 import { Children, ReactNode } from "react";
 
-export type ModalProviderProps = {
+export type ModalsProviderProps = {
   searchParams: unknown;
   children?: ReactNode;
 };
 
-export const ModalProvider = ({
+export const ModalsProvider = ({
   searchParams,
   children,
-}: ModalProviderProps) => {
+}: ModalsProviderProps) => {
   const params = new URLSearchParams(searchParams as any);
   const title = getString(params, KEYS.TITLE);
   const modalId = getString(params, KEYS.MODAL_ID);

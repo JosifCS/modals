@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import { ModalLink, ModalProvider } from "@/features/modal";
+import { ModalLink, ModalsProvider } from "@/features/modal";
 import { DemoContent } from "@/components/DemoContent";
 
 export default function Home({
@@ -36,14 +36,14 @@ export default function Home({
         <button>Open modal 2</button>
       </ModalLink>
 
-      <ModalProvider searchParams={searchParams}>
+      <ModalsProvider searchParams={searchParams}>
         <div id="01">
           <DemoContent label="Ten navždy první" />
         </div>
         <div id="02">
           <DemoContent label="Enim laborum sint" />
         </div>
-      </ModalProvider>
+      </ModalsProvider>
     </main>
   );
 }
