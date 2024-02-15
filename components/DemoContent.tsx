@@ -1,10 +1,8 @@
-export const DemoContent = () => {
-  console.log("Render DemoContent");
+export const DemoContent = ({ label }: { label: string }) => {
+  console.log("Render DemoContent - " + label);
   return (
     <div>
-      <h6>
-        Quis amet ut aliquip incididunt excepteur esse labore elit et fugiat.
-      </h6>
+      <h6>{label}</h6>
       <ul>
         <li>Eu est laboris pariatur nostrud cupidatat quis.</li>
         <li>Elit sit voluptate aliquip sit est ut pariatur amet.</li>

@@ -42,9 +42,11 @@ export default function Home({
 
       <ModalProvider searchParams={searchParams}>
         <div id="01">
-          <DemoContent />
+          <DemoContent label="Ten navždy první" />
         </div>
-        <div id="02">Tady je toho málo.</div>
+        <div id="02">
+          <DemoContent label="Enim laborum sint" />
+        </div>
       </ModalProvider>
     </main>
   );
