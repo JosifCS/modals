@@ -1,10 +1,20 @@
 import Link from "next/link";
 import { KEYS, setModalHref } from "..";
+import { Children, ReactNode } from "react";
 
-export const ModalProvider = ({ searchParams }: { searchParams: unknown }) => {
+export type ModalProviderProps = {
+  searchParams: unknown;
+  children?: ReactNode;
+};
+
+export const ModalProvider = ({
+  searchParams,
+  children,
+}: ModalProviderProps) => {
   const params = new URLSearchParams(searchParams as any);
   const close = params.get(KEYS.CLOSE) != "1";
   const title = getString(params, KEYS.TITLE);
+  const contentId = getString(params, KEYS.ID);
 
   if (close) return null;
 
@@ -16,6 +26,7 @@ export const ModalProvider = ({ searchParams }: { searchParams: unknown }) => {
         left: 100,
         right: 100,
         backgroundColor: "wheat",
+        padding: 16,
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -25,7 +36,11 @@ export const ModalProvider = ({ searchParams }: { searchParams: unknown }) => {
         </Link>
       </div>
 
-      <div>Něco</div>
+      <div>
+        {Children.toArray(children).find(
+          (x) => (x as any).props?.id == contentId
+        )}
+      </div>
     </div>
   );
 };

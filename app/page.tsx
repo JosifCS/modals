@@ -2,6 +2,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { ModalProvider, setModalHref } from "@/features/modal";
+import { DemoContent } from "@/components/DemoContent";
 
 export default function Home({
   params,
@@ -25,12 +26,26 @@ export default function Home({
       <Link
         href={setModalHref(searchParams, {
           title: "Modal s nadpisem a čočkou",
+          conttentId: "01",
         })}
       >
-        <button>Open modal2</button>
+        <button>Open modal</button>
+      </Link>
+      <Link
+        href={setModalHref(searchParams, {
+          title: "Modal s nadpisem a čočkou",
+          conttentId: "02",
+        })}
+      >
+        <button>Open modal 2</button>
       </Link>
 
-      <ModalProvider searchParams={searchParams} />
+      <ModalProvider searchParams={searchParams}>
+        <div id="01">
+          <DemoContent />
+        </div>
+        <div id="02">Tady je toho málo.</div>
+      </ModalProvider>
     </main>
   );
 }
