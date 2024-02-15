@@ -1,23 +1,23 @@
 export const KEYS = {
-  CLOSE: "modal",
   TITLE: "modalTitle",
-  ID: "modalId",
+  MODAL_ID: "modalId",
+  DATA: "modalData",
 } as const;
 
 export type SetModalHrefOpts = {
-  close?: boolean;
+  data?: { [key: string]: string };
+  modalId?: string;
   title?: string;
-  conttentId?: string;
 };
 
 export const setModalHref = (
   searchParams: unknown,
-  { close = false, title, conttentId }: SetModalHrefOpts
+  { title, modalId, data }: SetModalHrefOpts
 ) => {
   const params = new URLSearchParams(searchParams as any);
-  setString(params, KEYS.CLOSE, close ? undefined : "1");
   setString(params, KEYS.TITLE, title);
-  setString(params, KEYS.ID, conttentId);
+  setString(params, KEYS.MODAL_ID, modalId);
+  setData(params, data);
 
   return `?${params.toString()}`;
 };
@@ -25,4 +25,12 @@ export const setModalHref = (
 const setString = (params: URLSearchParams, key: string, value?: string) => {
   if (value == undefined) params.delete(key);
   else params.set(key, encodeURIComponent(value));
+};
+
+const setData = (
+  params: URLSearchParams,
+  value?: { [key: string]: string }
+) => {
+  if (value == undefined) params.delete(KEYS.DATA);
+  else params.set(KEYS.DATA, encodeURIComponent(JSON.stringify(value)));
 };

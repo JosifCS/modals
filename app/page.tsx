@@ -1,7 +1,5 @@
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
-import Link from "next/link";
-import { ModalProvider, setModalHref } from "@/features/modal";
+import { ModalLink, ModalProvider } from "@/features/modal";
 import { DemoContent } from "@/components/DemoContent";
 
 export default function Home({
@@ -23,22 +21,20 @@ export default function Home({
         minim. In incididunt commodo ex nisi qui esse reprehenderit elit sint
         officia excepteur. Consequat est non reprehenderit sint et ea veniam.
       </p>
-      <Link
-        href={setModalHref(searchParams, {
-          title: "Modal s nadpisem a čočkou",
-          conttentId: "01",
-        })}
+      <ModalLink
+        searchParams={searchParams}
+        modalId="01"
+        title="Modal s nadpisem a čočkou"
       >
-        <button>Open modal</button>
-      </Link>
-      <Link
-        href={setModalHref(searchParams, {
-          title: "Modal s nadpisem a čočkou",
-          conttentId: "02",
-        })}
+        <button>Open modal 1</button>
+      </ModalLink>
+      <ModalLink
+        searchParams={searchParams}
+        modalId="02"
+        title="Modal bez čočky"
       >
         <button>Open modal 2</button>
-      </Link>
+      </ModalLink>
 
       <ModalProvider searchParams={searchParams}>
         <div id="01">

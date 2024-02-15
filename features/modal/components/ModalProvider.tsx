@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { KEYS, setModalHref } from "..";
+import { KEYS, ModalLink, setModalHref } from "..";
 import { Children, ReactNode } from "react";
 
 export type ModalProviderProps = {
@@ -12,11 +12,10 @@ export const ModalProvider = ({
   children,
 }: ModalProviderProps) => {
   const params = new URLSearchParams(searchParams as any);
-  const close = params.get(KEYS.CLOSE) != "1";
   const title = getString(params, KEYS.TITLE);
-  const contentId = getString(params, KEYS.ID);
+  const modalId = getString(params, KEYS.MODAL_ID);
 
-  if (close) return null;
+  if (modalId == null) return null;
 
   return (
     <div
@@ -31,14 +30,14 @@ export const ModalProvider = ({
     >
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <h3>{title}</h3>
-        <Link href={setModalHref(searchParams, { close: true })}>
+        <ModalLink searchParams={searchParams}>
           <button>X</button>
-        </Link>
+        </ModalLink>
       </div>
 
       <div>
         {Children.toArray(children).find(
-          (x) => (x as any).props?.id == contentId
+          (x) => (x as any).props?.id == modalId
         )}
       </div>
     </div>
