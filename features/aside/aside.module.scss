@@ -193,10 +193,10 @@ $asideNavItemText: #e7eef8;
         transition: 0.35s all;
         display: none;
       }
+    }
 
-      &.active .arrow {
-        transform: rotate(90deg);
-      }
+    input[type="checkbox"]:checked ~ label > .arrow {
+      transform: rotate(90deg);
     }
   }
 }

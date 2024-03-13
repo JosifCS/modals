@@ -58,11 +58,7 @@ export const AsideItem = ({
       }`}
     >
       <input id={id} type="checkbox" hidden />
-      <label
-        htmlFor={id}
-        role="button"
-        className={`${styles.withSubs} ${/*isExpanded && styles.active*/ ""}`}
-      >
+      <label htmlFor={id} role="button" className={styles.withSubs}>
         <div className={styles.info}>
           <Icon size={19} fill="#e7eef8" />
           <span className={styles.text}>{title}</span>
