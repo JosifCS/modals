@@ -1,6 +1,6 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 import styles from "./layout.module.scss";
-import { Aside, AsideProps } from "@ceskysoftware/components/client";
+import { Aside, AsideProps } from "../aside";
 
 /** Layout properties unique to each page. */
 export type LayoutProps = PageInfo & {
@@ -24,7 +24,6 @@ type PageInfo = {
 
 type CsLayoutProps = AsideProps & {
   children: React.ReactNode;
-  webTitle: string;
   layoutProps: PageInfo;
 };
 
@@ -36,11 +35,10 @@ type CsLayoutProps = AsideProps & {
  *        layoutProps={prop}
  *        current="router/page/url"
  *        menu={[]}
- *        onNavigate={() => {}}
  *        user={{}}
  *        webTitle="WebTitle"
  *      >
- *        Id reprehenderit enim
+ *        {prop.children}
  *      </CsLayout>
  *    );
  *  };
@@ -54,26 +52,11 @@ export const CsLayout = ({
   menu,
   user,
   current,
-  webTitle,
   locales,
   logo,
   logoutUrl,
   profileUrl,
-  onNavigate,
 }: CsLayoutProps) => {
-  useEffect(() => {
-    //TODO: V reactu se nikdy nemanipuluje přímo s DOMem - vyřešit
-    noAside
-      ? document.body.classList.remove(styles.bgImg)
-      : document.body.classList.add(styles.bgImg);
-
-    document.title = title
-      ? noAside
-        ? title
-        : `${webTitle} - ${title}`
-      : webTitle;
-  }, [noAside, title]);
-
   return (
     <>
       {noAside ? (
@@ -85,7 +68,6 @@ export const CsLayout = ({
             logo={logo}
             current={current}
             menu={menu}
-            onNavigate={onNavigate}
             locales={locales}
             logoutUrl={logoutUrl}
             profileUrl={profileUrl}
@@ -95,7 +77,7 @@ export const CsLayout = ({
             className={[styles.layout, fullscreen ? "" : styles.wrapper].join(
               " "
             )}
-            data-offcanvas={sideOffcanvas ?? ""}
+            //data-offcanvas={sideOffcanvas ?? ""}
           >
             <main>
               <section>

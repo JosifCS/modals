@@ -1,46 +1,48 @@
-@import "../../assets/styles/variables.scss";
+$breakpointMd: 768px;
+
+/*-----------*/
 
 .bgImg {
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	min-height: 100vh;
-	background-image: var(--bg-img);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  background-image: var(--bg-img);
 }
 
 .layout {
-	&[data-offcanvas="md"] {
-		@media screen and (min-width: 900px) {
-			margin-right: 400px;
-		}
-	}
+  &[data-offcanvas="md"] {
+    @media screen and (min-width: 900px) {
+      margin-right: 400px;
+    }
+  }
 
-	&[data-offcanvas="xl"] {
-		@media screen and (min-width: 900px) {
-			margin-right: 400px;
-		}
-		@media screen and (min-width: 1300px) {
-			margin-right: 800px;
-		}
-	}
+  &[data-offcanvas="xl"] {
+    @media screen and (min-width: 900px) {
+      margin-right: 400px;
+    }
+    @media screen and (min-width: 1300px) {
+      margin-right: 800px;
+    }
+  }
 }
 
 .wrapper {
-	padding: 1rem 0;
-	position: relative;
-	transition: all 0.2s;
+  padding: 1rem 0;
+  position: relative;
+  transition: all 0.2s;
 
-	@media screen and (min-width: $breakpointMd) {
-		padding-left: 4.7rem;
-	}
+  @media screen and (min-width: $breakpointMd) {
+    padding-left: 4.7rem;
+  }
 }
 
 $gutter-x: 1.5rem;
 
 .containerFluid {
-	width: 100%;
-	padding-right: $gutter-x;
-	padding-left: $gutter-x;
-	margin-right: auto;
-	margin-left: auto;
+  width: 100%;
+  padding-right: $gutter-x;
+  padding-left: $gutter-x;
+  margin-right: auto;
+  margin-left: auto;
 }
