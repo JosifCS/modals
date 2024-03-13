@@ -20,6 +20,33 @@ export default function RootLayout({
           current="/"
           menu={[
             { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+            {
+              icon: IconCircle,
+              title: "Many childs",
+              items: [
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+              ],
+            },
+            {
+              icon: IconCircle,
+              title: "One children",
+              items: [
+                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+              ],
+            },
+            { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+            { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
             { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
           ]}
           logoutUrl="/l"

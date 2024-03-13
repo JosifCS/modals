@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 import styles from "./aside.module.scss";
 import { CsIcon, IconArrowRight } from "@ceskysoftware/components/icons";
 import Link from "next/link";
@@ -13,7 +13,7 @@ export type AsideItemIntern = {
    * The `url` of the item should correspond to this value. */
   current: string;
   /** URL. The value must be unique. */
-  url: string;
+  url?: string;
   /** If there are any items, it's a dropdown */
   items?: AsideItemProps[];
   /** Don't render this aside item. */
@@ -35,52 +35,73 @@ export const AsideItem = ({
   items,
   hidden = false,
 }: AsideItemIntern) => {
+  const id = useId();
   if (hidden) return <></>;
-  else
-    return items && items.length > 0 ? (
-      <li>
-        <div
-          className={`${styles.asideNavItem} ${styles.asideNavItemSubnav} ${
-            /*isExpanded && styles.active*/ ""
-          }`}
-          role="button"
-          //{...getToggleProps()}
-        >
-          <div className={styles.asideNavItemInfo}>
-            <Icon size={19} fill="#e7eef8" />
-            <span className={styles.asideNavItem__text}>{title}</span>
-          </div>
-          <div className={styles.asideNavItemExtra}>
-            <IconArrowRight className={styles.asideNavItemExtraArrow} />
-          </div>
-        </div>
-
-        <ul
-          className={`${styles.asideSubnav} ${
-            /*isExpanded && styles.show*/ ""
-          }`} /*{...getCollapseProps()}*/
-          /*style={{ display: "block" }}*/
-        >
-          {items &&
-            items.map((e, i) => {
-              return (
-                <AsideItem key={i} current={current} level={level + 1} {...e} />
-              );
-            })}
-        </ul>
-      </li>
-    ) : (
-      <li>
-        <Link
-          href={url}
-          className={`${styles.asideNavItem} ${
-            current == url ? styles.active : ""
-          }`}
-          style={{ cursor: "pointer" }}
-        >
+  if (url != undefined)
+    return (
+      <li
+        className={`${styles.asideNavItem} ${
+          current == url ? styles.active : ""
+        }`}
+      >
+        <Link href={url}>
           {level < 2 && <Icon size={19} fill="#e7eef8" />}
-          <span className={styles.asideNavItem__text}>{title}</span>
+          <span className={styles.text}>{title}</span>
         </Link>
       </li>
     );
+
+  return (
+    <li
+      className={`${styles.asideNavItem} ${styles.withSubs} ${
+        /*isExpanded && styles.active*/ ""
+      }`}
+    >
+      <input id={id} type="checkbox" hidden />
+      <label
+        htmlFor={id}
+        role="button"
+        className={`${styles.withSubs} ${/*isExpanded && styles.active*/ ""}`}
+      >
+        <div className={styles.info}>
+          <Icon size={19} fill="#e7eef8" />
+          <span className={styles.text}>{title}</span>
+        </div>
+        <IconArrowRight className={styles.arrow} />
+      </label>
+    </li>
+  );
+
+  return (
+    <li>
+      <div
+        className={`${styles.asideNavItem} ${styles.withSubs} ${
+          /*isExpanded && styles.active*/ ""
+        }`}
+        role="button"
+        //{...getToggleProps()}
+      >
+        <div className={styles.info}>
+          <Icon size={19} fill="#e7eef8" />
+          <span className={styles.text}>{title}</span>
+        </div>
+        <div className={styles.asideNavItemExtra}>
+          <IconArrowRight className={styles.arrow} />
+        </div>
+      </div>
+
+      <ul
+        className={`${styles.asideSubnav} ${
+          /*isExpanded && styles.show*/ ""
+        }`} /*{...getCollapseProps()}*/
+        /*style={{ display: "block" }}*/
+      >
+        {items?.map((e, i) => {
+          return (
+            <AsideItem key={i} current={current} level={level + 1} {...e} />
+          );
+        })}
+      </ul>
+    </li>
+  );
 };

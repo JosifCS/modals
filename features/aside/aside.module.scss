@@ -144,8 +144,12 @@ $asideNavItemText: #e7eef8;
     li {
       padding: 0.275rem 0;
     }
+  }
 
-    .asideNavItem {
+  /* ===== aside item ===== */
+  .asideNavItem {
+    label,
+    a {
       display: flex;
       align-items: center;
       border-radius: 1rem;
@@ -153,21 +157,11 @@ $asideNavItemText: #e7eef8;
       color: $asideNavItemText;
       transition: 0.35s all;
       user-select: none;
-
-      .asideNavItem__ico {
-        fill: $asideNavItemText;
-        width: 19px;
-        height: 19px;
-      }
-
-      .asideNavItem__text {
-        display: none;
-        font-size: 0.85rem;
-        margin-left: 1rem;
-      }
+      cursor: pointer;
 
       &:hover {
         text-decoration: none;
+        color: $asideNavItemText;
         background-color: #232328;
       }
 
@@ -175,41 +169,46 @@ $asideNavItemText: #e7eef8;
         background-color: #19191f;
       }
 
-      /* ===== item with subnav ===== */
-      &.asideNavItemSubnav {
-        justify-content: space-between;
-        line-height: 1;
-        cursor: pointer;
-
-        .asideNavItemInfo {
-          display: flex;
-          align-items: center;
-        }
-
-        .asideNavItemExtraArrow {
-          fill: #e7eef8;
-          width: 20px;
-          height: 20px;
-          transition: 0.35s all;
-          display: none;
-        }
-
-        &.active .asideNavItemExtraArrow {
-          transform: rotate(90deg);
-        }
+      .text {
+        display: none;
+        font-size: 0.85rem;
+        margin-left: 1rem;
       }
     }
 
-    /* ===== second lev ===== */
-    .asideSubnav {
-      padding: 0 0 0 0.75em;
-      margin: 0;
-      list-style-type: none;
+    .withSubs {
+      justify-content: space-between;
+      line-height: 1;
+      cursor: pointer;
 
-      &.show li {
+      .info {
+        display: flex;
+        align-items: center;
+      }
+
+      .arrow {
+        fill: #e7eef8;
+        width: 20px;
+        height: 20px;
+        transition: 0.35s all;
         display: none;
       }
+
+      &.active .arrow {
+        transform: rotate(90deg);
+      }
     }
+  }
+}
+
+/* ===== second lev ===== */
+.asideSubnav {
+  padding: 0 0 0 0.75em;
+  margin: 0;
+  list-style-type: none;
+
+  &.show li {
+    display: none;
   }
 }
 
@@ -251,11 +250,11 @@ $asideNavItemText: #e7eef8;
   background-color: $asiadeBgH;
   will-change: backdrop-filter;
 
-  .asideNavItem__text {
+  .text {
     display: block !important;
   }
 
-  .asideNavItemExtraArrow {
+  .arrow {
     display: block !important;
   }
 
