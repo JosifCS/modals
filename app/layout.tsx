@@ -13,9 +13,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = headers();
   return (
     <html lang="en">
       <body>
+        <div>{headersList.get("x-pathname")}</div>
         <LayoutX>{children}</LayoutX>
       </body>
     </html>

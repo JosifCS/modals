@@ -11,7 +11,7 @@ export const LayoutX = (prop: LayoutProps) => {
     <CsLayout
       layoutProps={prop}
       menu={[
-        { icon: IconCircle, title: "Esse voluptat", url: "/demo1" },
+        { icon: IconCircle, title: "Home", url: "/" },
         {
           icon: IconCircle,
           title: "Many childs",
@@ -36,7 +36,7 @@ export const LayoutX = (prop: LayoutProps) => {
           title: "One children",
           items: [{ icon: IconAdd, title: "Esse voluptat", url: "/demo3/sub" }],
         },
-        { icon: IconCircle, title: "Esse voluptat", url: "/demo2" },
+        { icon: IconCircle, title: "Subpage", url: "/subpage" },
       ]}
       user={{ avatar: "/", info: "", name: "User" }}
       logoutUrl="/"
