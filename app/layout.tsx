@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "@ceskysoftware/components/styles";
+import { Aside } from "@/features/aside";
+import { IconCircle } from "@ceskysoftware/components/icons";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +15,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Aside
+          current="/"
+          menu={[
+            { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+            { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+          ]}
+          logoutUrl="/l"
+          profileUrl="/p"
+          user={{ avatar: "/", info: "---", name: "Username" }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
