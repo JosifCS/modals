@@ -65,31 +65,9 @@ export const AsideItem = ({
         </div>
         <IconArrowRight className={styles.arrow} />
       </label>
-    </li>
-  );
-
-  return (
-    <li>
-      <div
-        className={`${styles.asideNavItem} ${styles.withSubs} ${
-          /*isExpanded && styles.active*/ ""
-        }`}
-        role="button"
-        //{...getToggleProps()}
-      >
-        <div className={styles.info}>
-          <Icon size={19} fill="#e7eef8" />
-          <span className={styles.text}>{title}</span>
-        </div>
-        <div className={styles.asideNavItemExtra}>
-          <IconArrowRight className={styles.arrow} />
-        </div>
-      </div>
 
       <ul
-        className={`${styles.asideSubnav} ${
-          /*isExpanded && styles.show*/ ""
-        }`} /*{...getCollapseProps()}*/
+        className={`${styles.sublist} `} /*{...getCollapseProps()}*/
         /*style={{ display: "block" }}*/
       >
         {items?.map((e, i) => {

@@ -198,17 +198,14 @@ $asideNavItemText: #e7eef8;
     input[type="checkbox"]:checked ~ label > .arrow {
       transform: rotate(90deg);
     }
-  }
-}
 
-/* ===== second lev ===== */
-.asideSubnav {
-  padding: 0 0 0 0.75em;
-  margin: 0;
-  list-style-type: none;
-
-  &.show li {
-    display: none;
+    /* sub items*/
+    .sublist {
+      padding: 0 0 0 0.75em;
+      margin: 0;
+      list-style-type: none;
+      display: none;
+    }
   }
 }
 
@@ -250,12 +247,17 @@ $asideNavItemText: #e7eef8;
   background-color: $asiadeBgH;
   will-change: backdrop-filter;
 
-  .text {
-    display: block !important;
-  }
+  .asideNavItem {
+    .text {
+      display: block !important;
+    }
 
-  .arrow {
-    display: block !important;
+    .arrow {
+      display: block !important;
+    }
+    input[type="checkbox"]:checked ~ .sublist {
+      display: block;
+    }
   }
 
   .aside_user__info {

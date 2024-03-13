@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import "@ceskysoftware/components/styles";
 import { Aside } from "@/features/aside";
-import { IconCircle } from "@ceskysoftware/components/icons";
+import {
+  IconAdd,
+  IconAmazonPay,
+  IconCircle,
+} from "@ceskysoftware/components/icons";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,26 +28,33 @@ export default function RootLayout({
               icon: IconCircle,
               title: "Many childs",
               items: [
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
+                {
+                  icon: IconAdd,
+                  title: "Esse voluptat",
+                  items: [
+                    { icon: IconCircle, title: "Voluptat 3", url: "/demo" },
+                    { icon: IconCircle, title: "Voluptat 3", url: "/demo" },
+                    { icon: IconCircle, title: "Voluptat 3", url: "/demo" },
+                    { icon: IconCircle, title: "Voluptat 3", url: "/demo" },
+                  ],
+                },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
+                { icon: IconAmazonPay, title: "Esse voluptat", url: "/demo" },
               ],
             },
             {
               icon: IconCircle,
               title: "One children",
-              items: [
-                { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
-              ],
+              items: [{ icon: IconAdd, title: "Esse voluptat", url: "/demo" }],
             },
             { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
             { icon: IconCircle, title: "Esse voluptat", url: "/demo" },
