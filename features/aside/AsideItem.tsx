@@ -2,6 +2,7 @@ import React, { useId } from "react";
 import styles from "./aside.module.scss";
 import { CsIcon, IconArrowRight } from "@ceskysoftware/components/icons";
 import Link from "next/link";
+import { headers } from "next/headers";
 
 /** {@link AsideItem} parameters. */
 export type AsideItemIntern = {
@@ -9,9 +10,6 @@ export type AsideItemIntern = {
   title: string;
   /** Icon. */
   icon: CsIcon;
-  /** The relative path of the currently open page.
-   * The `url` of the item should correspond to this value. */
-  current: string;
   /** URL. The value must be unique. */
   url?: string;
   /** If there are any items, it's a dropdown */
@@ -29,22 +27,19 @@ export type AsideItemProps = Omit<
 export const AsideItem = ({
   title,
   icon: Icon,
-  current,
   url,
   level,
   items,
   hidden = false,
 }: AsideItemIntern) => {
+  const headersList = headers();
   const id = useId();
+  const active = headersList.get("x-pathname") == url;
   if (hidden) return <></>;
   if (url != undefined)
     return (
-      <li
-        className={`${styles.asideNavItem} ${
-          current == url ? styles.active : ""
-        }`}
-      >
-        <Link href={url}>
+      <li className={styles.asideNavItem}>
+        <Link href={url} className={active ? styles.active : ""}>
           {level < 2 && <Icon size={19} fill="#e7eef8" />}
           <span className={styles.text}>{title}</span>
         </Link>
@@ -71,9 +66,7 @@ export const AsideItem = ({
         /*style={{ display: "block" }}*/
       >
         {items?.map((e, i) => {
-          return (
-            <AsideItem key={i} current={current} level={level + 1} {...e} />
-          );
+          return <AsideItem key={i} level={level + 1} {...e} />;
         })}
       </ul>
     </li>

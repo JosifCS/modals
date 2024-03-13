@@ -14,9 +14,6 @@ export type AsideProps = {
   logo?: CsIcon | string;
   /** User information at the bottom of the menu. */
   user: AsideUserProps;
-  /** The relative path of the currently open page (from `useRouter`).
-   * The `url` of the individual `menu` items in the menu should correspond to this value. */
-  current: string;
   /** The URL of the logout page. */
   logoutUrl: string;
   /** URL address of the user's profile page (for example, with settings). */
@@ -51,7 +48,6 @@ export const Aside = ({
   logo: Logo,
   user,
   menu,
-  current,
   locales,
   logoutUrl,
   profileUrl,
@@ -64,13 +60,11 @@ export const Aside = ({
     {
       icon: IconProfile,
       title: locales?.userProfile ?? "Benutzerprofil",
-      current,
       url: profileUrl,
     },
     {
       icon: IconLogout,
       title: locales?.logout ?? "Abmeldung",
-      current,
       url: logoutUrl,
     }
   );
@@ -101,7 +95,7 @@ export const Aside = ({
           <nav aria-label="asideNav">
             <ul className={styles.asideNav}>
               {menu.map((e, i) => {
-                return <AsideItem key={i} current={current} level={0} {...e} />;
+                return <AsideItem key={i} level={0} {...e} />;
               })}
             </ul>
           </nav>

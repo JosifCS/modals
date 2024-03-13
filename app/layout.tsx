@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@ceskysoftware/components/styles";
-import { Aside } from "@/features/aside";
 import { LayoutX } from "@/components/LayoutX";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
