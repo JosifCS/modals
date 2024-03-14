@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "@ceskysoftware/components/styles";
 import { LayoutX } from "@/components/LayoutX";
-import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,15 +9,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  modals,
+}: {
   children: React.ReactNode;
-}>) {
-  const headersList = headers();
+  modals: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
-        <div>{headersList.get("x-pathname")}</div>
         <LayoutX>{children}</LayoutX>
+        {modals}
       </body>
     </html>
   );

@@ -1,7 +1,5 @@
 import styles from "./page.module.css";
-import { Modal, ModalLink, ModalsProvider } from "@/features/modal";
-import { DemoContent } from "@/components/DemoContent";
-import { DemoModal } from "@/components/DemoModal";
+import { ModalLink } from "@/features/modal";
 
 export default function Home({
   params,
@@ -10,6 +8,7 @@ export default function Home({
   params: { [key: string]: string };
   searchParams: undefined;
 }) {
+  console.log("Render Page");
   return (
     <main className={styles.main}>
       <h1>Home</h1>
@@ -51,21 +50,6 @@ export default function Home({
       >
         <button>Open modal data 2</button>
       </ModalLink>
-
-      <ModalsProvider searchParams={searchParams}>
-        <Modal modalId="01">
-          <DemoContent label="Ten navždy první" />
-        </Modal>
-        <Modal modalId="02" title="Původní titulek">
-          <DemoContent label="Enim laborum sint" />
-        </Modal>
-        <DemoModal
-          modalId="03"
-          title="Demo FC modal"
-          searchParams={searchParams}
-          vol={55}
-        />
-      </ModalsProvider>
     </main>
   );
 }
