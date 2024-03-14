@@ -14,10 +14,6 @@ type PageInfo = {
   footer?: React.ReactNode;
   /** No main menu on the left. */
   noAside?: boolean;
-  /** If {@link noAside}=true, an "WebRendite - " is added before the title.
-   * If {@link noAside}=false, then only the specified text is in the title.
-   * The default title is "WebRendite". */
-  title?: string;
   /** All the indentation around the content of the page is removed and it is then over the entire page (even behind the menu). */
   fullscreen?: boolean;
 };
@@ -47,15 +43,15 @@ type CsLayoutProps = AsideProps & {
  * on individual pages and will have parameters of type {@link LayoutProps}.
  */
 export const CsLayout = ({
-  layoutProps: { footer, title, noAside = false, fullscreen = false },
+  layoutProps: { footer, noAside = false, fullscreen = false },
   children,
   menu,
   user,
-  current,
   locales,
   logo,
   logoutUrl,
   profileUrl,
+  link,
 }: CsLayoutProps) => {
   return (
     <>
@@ -66,7 +62,7 @@ export const CsLayout = ({
           <Aside
             user={user}
             logo={logo}
-            current={current}
+            link={link}
             menu={menu}
             locales={locales}
             logoutUrl={logoutUrl}

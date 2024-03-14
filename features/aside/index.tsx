@@ -7,6 +7,7 @@ import {
   IconProfile,
 } from "@ceskysoftware/components/icons";
 import { AsideItem, AsideItemIntern, AsideItemProps } from "./AsideItem";
+import Link from "next/link";
 
 /** {@link Aside} parameters. */
 export type AsideProps = {
@@ -28,6 +29,7 @@ export type AsideProps = {
     /** Default value `"Abmeldung"`. */
     logout?: string;
   };
+  link: typeof Link;
 };
 
 /** User information at the bottom of the menu. */
@@ -46,6 +48,7 @@ export type AsideUserProps = {
  */
 export const Aside = ({
   logo: Logo,
+  link,
   user,
   menu,
   locales,
@@ -61,11 +64,13 @@ export const Aside = ({
       icon: IconProfile,
       title: locales?.userProfile ?? "Benutzerprofil",
       url: profileUrl,
+      link,
     },
     {
       icon: IconLogout,
       title: locales?.logout ?? "Abmeldung",
       url: logoutUrl,
+      link,
     }
   );
 
@@ -95,7 +100,7 @@ export const Aside = ({
           <nav aria-label="asideNav">
             <ul className={styles.asideNav}>
               {menu.map((e, i) => {
-                return <AsideItem key={i} level={0} {...e} />;
+                return <AsideItem key={i} level={0} link={link} {...e} />;
               })}
             </ul>
           </nav>

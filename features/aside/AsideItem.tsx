@@ -17,29 +17,29 @@ export type AsideItemIntern = {
   /** Don't render this aside item. */
   hidden?: boolean;
   level: number;
+  link: typeof Link;
 };
 
 export type AsideItemProps = Omit<
   AsideItemIntern,
-  "level" | "current" | "onNavigate"
+  "level" | "current" | "onNavigate" | "link"
 >;
 
 export const AsideItem = ({
   title,
   icon: Icon,
+  link: Link,
   url,
   level,
   items,
   hidden = false,
 }: AsideItemIntern) => {
-  const headersList = headers();
   const id = useId();
-  const active = headersList.get("x-pathname") == url;
   if (hidden) return <></>;
   if (url != undefined)
     return (
       <li className={styles.asideNavItem}>
-        <Link href={url} className={active ? styles.active : ""}>
+        <Link href={url} className={/*active ? styles.active : */ ""}>
           {level < 2 && <Icon size={19} fill="#e7eef8" />}
           <span className={styles.text}>{title}</span>
         </Link>
@@ -66,7 +66,7 @@ export const AsideItem = ({
         /*style={{ display: "block" }}*/
       >
         {items?.map((e, i) => {
-          return <AsideItem key={i} level={level + 1} {...e} />;
+          return <AsideItem key={i} level={level + 1} link={Link} {...e} />;
         })}
       </ul>
     </li>

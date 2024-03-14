@@ -1,6 +1,6 @@
 // https://stackoverflow.com/a/74588571
 
-import { NextResponse } from "next/server";
+/*import { NextResponse } from "next/server";
 
 export function middleware(request) {
   const requestHeaders = new Headers(request.headers);
@@ -12,4 +12,4 @@ export function middleware(request) {
       headers: requestHeaders,
     },
   });
-}
+}*/

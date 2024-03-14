@@ -2,14 +2,15 @@ import { CsLayout, LayoutProps } from "@/features/layout";
 import {
   IconAdd,
   IconAmazon,
-  IconAmazonPay,
   IconCircle,
 } from "@ceskysoftware/components/icons";
+import Link from "next/link";
 
 export const LayoutX = (prop: LayoutProps) => {
   return (
     <CsLayout
       layoutProps={prop}
+      link={Link}
       menu={[
         { icon: IconCircle, title: "Home", url: "/" },
         {
