@@ -5,7 +5,7 @@ import { Icon, IconChevronRight, IconProps as IP } from "@tabler/icons-react";
 
 export type IconProps = ForwardRefExoticComponent<IP & RefAttributes<Icon>>;
 
-/** {@link AsideItem} parameters. */
+/** AsideItem parameters. */
 export type AsideItemIntern = {
   /** Label to the right next to the `icon`. */
   title: string;

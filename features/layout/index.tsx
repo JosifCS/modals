@@ -42,7 +42,7 @@ type CsLayoutProps = AsideProps & {
  * in which basic data will be defined. `Layout` will then be used
  * on individual pages and will have parameters of type {@link LayoutProps}.
  */
-export const CsLayout = ({
+export const Layout = ({
   layoutProps: { footer, noAside = false, fullscreen = false },
   children,
   menu,

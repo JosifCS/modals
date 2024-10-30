@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LayoutX } from "@/components/LayoutX";
+import "./global.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -13,7 +13,7 @@ import {
   IconUserCircle,
 } from "@tabler/icons-react";
 
-/** {@link Aside} parameters. */
+/** Aside parameters. */
 export type AsideProps = {
   /** Logo at the top of the menu. It can be a *IconProps* or a URL to an image. */
   logo?: IconProps | string;
@@ -48,7 +48,7 @@ export type AsideUserProps = {
 
 /**
  * A dark narrow menu located on the left side of the page.
- * @param param0 {@link AsideProps}.
+ * @param param0 AsideProps.
  */
 export const Aside = ({
   logo: Logo,

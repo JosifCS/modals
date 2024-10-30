@@ -1,10 +1,10 @@
-import { CsLayout, LayoutProps } from "@/features/layout";
+import { Layout, LayoutProps } from "@/features/layout";
 import { IconAbacus, IconCircle, IconPlus } from "@tabler/icons-react";
 import Link from "next/link";
 
 export const LayoutX = (prop: LayoutProps) => {
   return (
-    <CsLayout
+    <Layout
       layoutProps={prop}
       link={Link}
       menu={[
@@ -37,11 +37,11 @@ export const LayoutX = (prop: LayoutProps) => {
         },
         { icon: IconCircle, title: "Subpage", url: "/subpage" },
       ]}
-      user={{ avatar: "/", info: "", name: "User" }}
+      user={{ avatar: "/", info: "Descriprion", name: "User" }}
       logoutUrl="/"
       profileUrl="/"
     >
       {prop.children}
-    </CsLayout>
+    </Layout>
   );
 };
