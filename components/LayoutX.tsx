@@ -1,9 +1,5 @@
 import { CsLayout, LayoutProps } from "@/features/layout";
-import {
-  IconAdd,
-  IconAmazon,
-  IconCircle,
-} from "@ceskysoftware/components/icons";
+import { IconAbacus, IconCircle, IconPlus } from "@tabler/icons-react";
 import Link from "next/link";
 
 export const LayoutX = (prop: LayoutProps) => {
@@ -18,7 +14,7 @@ export const LayoutX = (prop: LayoutProps) => {
           title: "Many childs",
           items: [
             {
-              icon: IconAdd,
+              icon: IconPlus,
               title: "Esse voluptat",
               items: [
                 { icon: IconCircle, title: "Voluptat 3", url: "/list/a/a" },
@@ -27,15 +23,17 @@ export const LayoutX = (prop: LayoutProps) => {
                 { icon: IconCircle, title: "Voluptat 3", url: "/list/a/d" },
               ],
             },
-            { icon: IconAmazon, title: "Esse voluptat", url: "/list/amazon1" },
-            { icon: IconAmazon, title: "Esse voluptat", url: "/list/amazon2" },
-            { icon: IconAmazon, title: "Esse voluptat", url: "/list/amazon3" },
+            { icon: IconAbacus, title: "Esse voluptat", url: "/list/amazon1" },
+            { icon: IconAbacus, title: "Esse voluptat", url: "/list/amazon2" },
+            { icon: IconAbacus, title: "Esse voluptat", url: "/list/amazon3" },
           ],
         },
         {
           icon: IconCircle,
           title: "One children",
-          items: [{ icon: IconAdd, title: "Esse voluptat", url: "/demo3/sub" }],
+          items: [
+            { icon: IconPlus, title: "Esse voluptat", url: "/demo3/sub" },
+          ],
         },
         { icon: IconCircle, title: "Subpage", url: "/subpage" },
       ]}

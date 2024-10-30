@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "@ceskysoftware/components/styles";
 import { LayoutX } from "@/components/LayoutX";
 
 export const metadata: Metadata = {

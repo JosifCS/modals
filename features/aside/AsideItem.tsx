@@ -1,15 +1,16 @@
-import React, { useId } from "react";
+import React, { ForwardRefExoticComponent, RefAttributes, useId } from "react";
 import styles from "./aside.module.scss";
-import { CsIcon, IconArrowRight } from "@ceskysoftware/components/icons";
 import Link from "next/link";
-import { headers } from "next/headers";
+import { Icon, IconChevronRight, IconProps as IP } from "@tabler/icons-react";
+
+export type IconProps = ForwardRefExoticComponent<IP & RefAttributes<Icon>>;
 
 /** {@link AsideItem} parameters. */
 export type AsideItemIntern = {
   /** Label to the right next to the `icon`. */
   title: string;
   /** Icon. */
-  icon: CsIcon;
+  icon: IconProps;
   /** URL. The value must be unique. */
   url?: string;
   /** If there are any items, it's a dropdown */
@@ -40,7 +41,7 @@ export const AsideItem = ({
     return (
       <li className={styles.asideNavItem}>
         <Link href={url} className={/*active ? styles.active : */ ""}>
-          {level < 2 && <Icon size={19} fill="#e7eef8" />}
+          {level < 2 && <Icon size={19} />}
           <span className={styles.text}>{title}</span>
         </Link>
       </li>
@@ -55,10 +56,10 @@ export const AsideItem = ({
       <input id={id} type="checkbox" hidden />
       <label htmlFor={id} role="button" className={styles.withSubs}>
         <div className={styles.info}>
-          <Icon size={19} fill="#e7eef8" />
+          <Icon size={19} />
           <span className={styles.text}>{title}</span>
         </div>
-        <IconArrowRight className={styles.arrow} />
+        <IconChevronRight className={styles.arrow} />
       </label>
 
       <ul

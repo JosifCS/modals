@@ -1,18 +1,22 @@
 import React, { useId } from "react";
 import styles from "./aside.module.scss";
 import {
-  CsIcon,
-  IconLogout,
-  IconNav,
-  IconProfile,
-} from "@ceskysoftware/components/icons";
-import { AsideItem, AsideItemIntern, AsideItemProps } from "./AsideItem";
+  AsideItem,
+  AsideItemIntern,
+  AsideItemProps,
+  IconProps,
+} from "./AsideItem";
 import Link from "next/link";
+import {
+  IconLogout,
+  IconNavigation,
+  IconUserCircle,
+} from "@tabler/icons-react";
 
 /** {@link Aside} parameters. */
 export type AsideProps = {
-  /** Logo at the top of the menu. It can be a *CsIcon* or a URL to an image. */
-  logo?: CsIcon | string;
+  /** Logo at the top of the menu. It can be a *IconProps* or a URL to an image. */
+  logo?: IconProps | string;
   /** User information at the bottom of the menu. */
   user: AsideUserProps;
   /** The URL of the logout page. */
@@ -61,14 +65,14 @@ export const Aside = ({
 
   const footerItems = new Array<Omit<AsideItemIntern, "level">>(
     {
-      icon: IconProfile,
-      title: locales?.userProfile ?? "Benutzerprofil",
+      icon: IconUserCircle,
+      title: locales?.userProfile ?? "User profile",
       url: profileUrl,
       link,
     },
     {
       icon: IconLogout,
-      title: locales?.logout ?? "Abmeldung",
+      title: locales?.logout ?? "Logout",
       url: logoutUrl,
       link,
     }
@@ -78,7 +82,7 @@ export const Aside = ({
     <>
       <input type="checkbox" className={styles.asideToggleCheck} id={idCh1} />
       <label htmlFor={idCh1} className={styles.asideToggle}>
-        <IconNav />
+        <IconNavigation />
       </label>
 
       <aside className={styles.aside}>
